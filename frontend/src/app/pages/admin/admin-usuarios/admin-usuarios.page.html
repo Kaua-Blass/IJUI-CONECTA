@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/admin"></ion-back-button></ion-buttons>
+    <ion-title>Usuários</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <div class="user-card" *ngFor="let u of usuarios">
+      <div class="user-avatar">{{iniciais(u.nome)}}</div>
+      <div class="user-info">
+        <p class="user-nome">{{u.nome}}</p>
+        <p class="user-email">{{u.email}}</p>
+        <ion-badge [color]="u.role==='admin'?'dark':'medium'">{{u.role}}</ion-badge>
+      </div>
+      <div class="user-actions">
+        <ion-badge [color]="u.ativo ? 'success' : 'danger'" style="display:block;margin-bottom:6px">
+          {{u.ativo ? 'Ativo' : 'Inativo'}}
+        </ion-badge>
+        <ion-button fill="outline" size="small" [color]="u.ativo ? 'danger' : 'success'" (click)="toggleAtivo(u)" [disabled]="u.role==='admin'">
+          {{u.ativo ? 'Desativar' : 'Ativar'}}
+        </ion-button>
+      </div>
+    </div>
+    <p class="empty-state" *ngIf="!loading && usuarios.length===0">Nenhum usuário cadastrado.</p>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/admin"             routerLinkActive="tab-active"><ion-icon name="grid-outline"></ion-icon><ion-label>Dashboard</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"            routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

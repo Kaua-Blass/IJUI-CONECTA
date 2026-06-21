@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/admin/noticias"></ion-back-button></ion-buttons>
+    <ion-title>{{ editando ? 'Editar' : 'Nova' }} Notícia</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="page-content">
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Título *</ion-label>
+          <ion-input formControlName="titulo" placeholder="Título da notícia"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Categoria *</ion-label>
+          <ion-select formControlName="categoria" placeholder="Selecione...">
+            <ion-select-option *ngFor="let c of categorias" [value]="c">{{ c | titlecase }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Conteúdo *</ion-label>
+          <ion-textarea formControlName="conteudo" placeholder="Conteúdo completo da notícia..." rows="10" autoGrow="true"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" type="submit" color="dark">{{ editando ? 'Salvar alterações' : 'Publicar notícia' }}</ion-button>
+    </form>
+  </div>
+</ion-content>

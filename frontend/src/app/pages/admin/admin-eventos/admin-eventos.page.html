@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/admin"></ion-back-button></ion-buttons>
+    <ion-title>Eventos</ion-title>
+    <ion-buttons slot="end"><ion-button routerLink="/admin/eventos/novo"><ion-icon name="add-outline"></ion-icon></ion-button></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-card class="ev-row" *ngFor="let e of eventos" [class.cancelado]="e.cancelado">
+      <ion-card-content>
+        <div class="ev-top">
+          <div class="ev-date-box">
+            <span class="ev-day">{{e.data | date:'dd'}}</span>
+            <span class="ev-mon">{{e.data | date:'MMM'}}</span>
+          </div>
+          <div class="ev-info">
+            <p class="ev-titulo">{{e.titulo}}</p>
+            <p class="ev-meta"><ion-icon name="time-outline"></ion-icon>{{e.hora}} · <ion-icon name="location-outline"></ion-icon>{{e.local}}</p>
+            <ion-badge color="danger" *ngIf="e.cancelado">Cancelado</ion-badge>
+          </div>
+        </div>
+        <div class="action-row">
+          <ion-button fill="outline" size="small" [routerLink]="['/admin/eventos', e.id]">
+            <ion-icon name="pencil-outline" slot="start"></ion-icon>Editar
+          </ion-button>
+          <ion-button fill="outline" size="small" color="danger" (click)="confirmarCancelar(e)" [disabled]="e.cancelado">
+            <ion-icon name="close-circle-outline" slot="start"></ion-icon>Cancelar
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <p class="empty-state" *ngIf="!loading && eventos.length===0">Nenhum evento cadastrado.</p>
+  </div>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="dark" routerLink="/admin/eventos/novo"><ion-icon name="add"></ion-icon></ion-fab-button>
+</ion-fab>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/admin"             routerLinkActive="tab-active"><ion-icon name="grid-outline"></ion-icon><ion-label>Dashboard</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"            routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

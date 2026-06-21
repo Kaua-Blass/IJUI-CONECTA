@@ -1,0 +1,28 @@
+<ion-header><ion-toolbar><ion-title>Eventos</ion-title></ion-toolbar></ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-card class="evento-card" *ngFor="let e of eventos" [routerLink]="['/eventos', e.id]" [class.cancelado]="e.cancelado">
+      <ion-card-content>
+        <div class="ev-date-box">
+          <span class="ev-day">{{ e.data | date:'dd' }}</span>
+          <span class="ev-mon">{{ e.data | date:'MMM' }}</span>
+        </div>
+        <div class="ev-info">
+          <h3 class="ev-title">{{ e.titulo }}</h3>
+          <p class="ev-meta"><ion-icon name="time-outline"></ion-icon> {{ e.hora }} &nbsp;·&nbsp; <ion-icon name="location-outline"></ion-icon> {{ e.local }}</p>
+          <ion-badge color="danger" *ngIf="e.cancelado">Cancelado</ion-badge>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <p class="empty-state" *ngIf="!loading && eventos.length===0">Nenhum evento agendado.</p>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/ideias"></ion-back-button></ion-buttons>
+    <ion-title>Nova Ideia</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="page-content">
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Título *</ion-label>
+          <ion-input formControlName="titulo" placeholder="Ex: Ciclovia na Av. Lauro Dornelles"></ion-input>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched">Título muito curto.</div>
+
+        <ion-item class="form-item">
+          <ion-label position="stacked">Categoria *</ion-label>
+          <ion-select formControlName="categoria" placeholder="Selecione...">
+            <ion-select-option *ngFor="let c of categorias" [value]="c">{{ c }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('categoria')?.invalid && form.get('categoria')?.touched">Selecione uma categoria.</div>
+
+        <ion-item class="form-item">
+          <ion-label position="stacked">Descrição * (mín. 20 caracteres)</ion-label>
+          <ion-textarea formControlName="descricao" placeholder="Explique sua ideia e como ela beneficiaria a cidade..." rows="6" autoGrow="true"></ion-textarea>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('descricao')?.invalid && form.get('descricao')?.touched">Descrição muito curta.</div>
+      </ion-list>
+      <ion-button expand="block" type="submit" class="btn-green" style="margin-top:1rem">Publicar Ideia</ion-button>
+    </form>
+  </div>
+</ion-content>

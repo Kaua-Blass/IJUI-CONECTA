@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="header-logo">Ijuí Conecta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/notificacoes" class="notif-btn">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-badge *ngIf="naoLidas > 0" color="danger">{{ naoLidas }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+
+    <div class="welcome-banner">
+      <div>
+        <h2>Olá, {{ primeiroNome() }}!</h2>
+        <p>{{ hoje }}</p>
+      </div>
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+    </div>
+
+    <h3 class="section-title">O que você precisa?</h3>
+
+    <div class="modules-grid">
+      <button class="module-card" routerLink="/noticias">
+        <div class="mod-icon blue"><ion-icon name="newspaper-outline"></ion-icon></div>
+        <p class="mod-name">Notícias</p>
+        <p class="mod-sub">Prefeitura informa</p>
+      </button>
+
+      <button class="module-card" routerLink="/eventos">
+        <div class="mod-icon indigo"><ion-icon name="calendar-outline"></ion-icon></div>
+        <p class="mod-name">Eventos</p>
+        <p class="mod-sub">Agenda municipal</p>
+      </button>
+
+      <button class="module-card" routerLink="/reclamacoes">
+        <div class="mod-icon red"><ion-icon name="warning-outline"></ion-icon></div>
+        <p class="mod-name">Reclamações</p>
+        <p class="mod-sub">Reporte problemas</p>
+      </button>
+
+      <button class="module-card" routerLink="/ideias">
+        <div class="mod-icon green"><ion-icon name="bulb-outline"></ion-icon></div>
+        <p class="mod-name">Ideias</p>
+        <p class="mod-sub">Proponha melhorias</p>
+      </button>
+
+      <button class="module-card full-width" routerLink="/transparencia">
+        <div class="mod-icon purple"><ion-icon name="bar-chart-outline"></ion-icon></div>
+        <div>
+          <p class="mod-name">Transparência</p>
+          <p class="mod-sub">Indicadores do município</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="admin-btn-wrap" *ngIf="usuario?.role === 'admin'">
+      <ion-button expand="block" fill="outline" color="primary" routerLink="/admin">
+        <ion-icon name="settings-outline" slot="start"></ion-icon>
+        Painel Administrativo
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-selected"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-selected"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-selected"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-selected"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-selected"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

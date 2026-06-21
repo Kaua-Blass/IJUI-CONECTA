@@ -1,0 +1,10 @@
+.ideia-row {
+  ion-card-content { padding: 14px; }
+  .ideia-titulo-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .ideia-titulo { font-size: 14px; font-weight: 600; flex: 1; margin: 0 0 2px; color: #0F172A; line-height: 1.4; }
+  .ideia-cat    { font-size: 11px; color: #94A3B8; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 5px; }
+  .ideia-desc   { font-size: 13px; color: #64748B; margin: 0 0 .75rem; line-height: 1.5; }
+  .ideia-footer { display: flex; align-items: center; justify-content: space-between;
+    .votos { font-size: 13px; color: #94A3B8; display: flex; align-items: center; gap: 4px; }
+  }
+}

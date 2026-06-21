@@ -1,0 +1,55 @@
+<ion-header><ion-toolbar><ion-title>Avaliação</ion-title></ion-toolbar></ion-header>
+<ion-content>
+  <div class="page-content">
+
+    <div class="section-title">Avaliar projeto ou serviço</div>
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Projeto / Serviço *</ion-label>
+          <ion-select formControlName="projeto" placeholder="Selecione...">
+            <ion-select-option *ngFor="let p of projetos" [value]="p">{{p}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <div class="section-title" style="margin-top:.5rem">Sua nota</div>
+      <div class="stars-row">
+        <span *ngFor="let n of [1,2,3,4,5]" class="star" [class.lit]="n<=nota" (click)="setNota(n)">★</span>
+      </div>
+
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Comentário (opcional)</ion-label>
+          <ion-textarea formControlName="comentario" placeholder="Compartilhe sua experiência..." rows="3"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" type="submit" class="btn-green">Enviar avaliação</ion-button>
+    </form>
+
+    <div class="section-title" style="margin-top:1.5rem">Avaliações recentes</div>
+    <p class="empty-state" *ngIf="feedbacks.length===0">Nenhuma avaliação ainda.</p>
+
+    <div class="review-card" *ngFor="let f of feedbacks">
+      <div class="rv-header">
+        <div class="rv-avatar">{{iniciais(f.projeto)}}</div>
+        <div>
+          <p class="rv-projeto">{{f.projeto}}</p>
+          <p class="rv-date">{{f.createdAt | date:'dd/MM/yyyy'}}</p>
+        </div>
+        <div class="rv-stars" style="margin-left:auto">
+          <span *ngFor="let n of [1,2,3,4,5]" [class.lit]="n<=f.nota">★</span>
+        </div>
+      </div>
+      <p class="rv-comentario" *ngIf="f.comentario">{{f.comentario}}</p>
+    </div>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

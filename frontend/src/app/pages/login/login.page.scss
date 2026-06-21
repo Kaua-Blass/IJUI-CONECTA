@@ -1,0 +1,63 @@
+ion-content.auth-content { --background: #2563EB; }
+
+.auth-hero {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 3.5rem 1.5rem 2rem;
+  .auth-logo {
+    width: 68px; height: 68px; background: #fff; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    ion-icon { font-size: 32px; color: #2563EB; }
+  }
+  h1 { font-family: 'Fraunces', serif; font-size: 28px; color: #fff; margin: 0; font-weight: 600; }
+  p  { font-size: 14px; color: rgba(255,255,255,.75); margin: 6px 0 0; }
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 2rem 1.5rem 2.5rem;
+  min-height: 58vh;
+  h2 { font-family: 'Fraunces', serif; font-size: 22px; margin: 0 0 4px; color: #0F172A; }
+  .subtitle { font-size: 13px; color: #64748B; margin: 0 0 1.5rem; }
+}
+
+.link-btn { --color: #2563EB; font-size: 14px; }
+
+.divider {
+  display: flex; align-items: center; gap: 10px; margin: 1rem 0;
+  &::before, &::after { content: ''; flex: 1; height: 1px; background: #E2E8F0; }
+  span { font-size: 12px; color: #94A3B8; }
+}
+
+/* ── Acesso rápido de demonstração ─────────────────────────── */
+.demo-box {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 16px;
+  padding: 1.1rem;
+  margin: 1.5rem 0 .5rem;
+
+  .demo-box-header {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: #1D4ED8;
+    margin-bottom: .75rem;
+    ion-icon { font-size: 17px; color: #D97706; }
+  }
+
+  .demo-buttons { display: flex; flex-direction: column; gap: 8px; }
+
+  .demo-pill {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: #fff; border: 1.5px solid #2563EB; color: #1D4ED8;
+    border-radius: 999px; padding: .65rem 1rem;
+    font-size: 13.5px; font-weight: 600; font-family: 'Inter', sans-serif;
+    cursor: pointer; transition: all .15s;
+    ion-icon { font-size: 18px; }
+    &:active { transform: scale(.97); background: #EFF6FF; }
+
+    &.demo-pill--admin {
+      border-color: #4F46E5; color: #4338CA;
+    }
+  }
+}

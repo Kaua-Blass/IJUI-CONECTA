@@ -1,0 +1,28 @@
+<ion-header><ion-toolbar><ion-title>Notícias</ion-title></ion-toolbar></ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <div class="chips-row">
+    <ion-chip *ngFor="let c of categorias; let i = index" [class.active]="catSel===c" (click)="catSel=c;carregar()">
+      {{ labels[i] }}
+    </ion-chip>
+  </div>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-card class="news-card" *ngFor="let n of noticias" [routerLink]="['/noticias', n.id]">
+      <img [src]="n.imagem || 'assets/placeholder.png'" class="news-img" alt="Imagem da notícia"/>
+      <ion-card-content>
+        <ion-badge [class]="'cat-'+n.categoria">{{ n.categoria | titlecase }}</ion-badge>
+        <h3 class="news-title">{{ n.titulo }}</h3>
+        <p class="news-date"><ion-icon name="calendar-outline"></ion-icon> {{ n.createdAt | date:'dd/MM/yyyy' }}</p>
+      </ion-card-content>
+    </ion-card>
+    <p class="empty-state" *ngIf="!loading && noticias.length===0">Nenhuma notícia encontrada.</p>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"         routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"     routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes"  routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"       routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"       routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

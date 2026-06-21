@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+    <ion-title>Transparência</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <div class="ods-banner">
+      <ion-icon name="earth-outline"></ion-icon>
+      <div>
+        <p class="ods-title">ODS 11 — Cidades Sustentáveis</p>
+        <p class="ods-sub">Dados de participação cidadã em Ijuí — RS</p>
+      </div>
+    </div>
+
+    <ion-spinner *ngIf="loading"></ion-spinner>
+
+    <div *ngIf="dados">
+      <div class="section-title">Indicadores gerais</div>
+      <div class="kpi-grid">
+        <div class="kpi-card blue">
+          <ion-icon name="people-outline"></ion-icon>
+          <div class="kpi-num">{{dados.totalUsuarios | number}}</div>
+          <div class="kpi-label">Cidadãos ativos</div>
+        </div>
+        <div class="kpi-card coral">
+          <ion-icon name="warning-outline"></ion-icon>
+          <div class="kpi-num">{{dados.totalReclamacoes | number}}</div>
+          <div class="kpi-label">Reclamações abertas</div>
+        </div>
+        <div class="kpi-card green">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <div class="kpi-num">{{dados.reclamacoesResolvidas | number}}</div>
+          <div class="kpi-label">Reclamações resolvidas</div>
+        </div>
+        <div class="kpi-card amber">
+          <ion-icon name="star-outline"></ion-icon>
+          <div class="kpi-num">{{dados.mediaAvaliacoes | number:'1.1-1'}} ★</div>
+          <div class="kpi-label">Satisfação média</div>
+        </div>
+      </div>
+
+      <div class="section-title">Reclamações resolvidas</div>
+      <div class="prog-card">
+        <div class="prog-label-row">
+          <span>{{dados.reclamacoesResolvidas}} de {{dados.totalReclamacoes}}</span>
+          <span class="prog-pct">{{pctResolvidas()}}%</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-fill blue" [style.width.%]="pctResolvidas()"></div></div>
+      </div>
+
+      <div class="section-title">Ideias implementadas</div>
+      <div class="prog-card">
+        <div class="prog-label-row">
+          <span>{{dados.ideiasImplementadas}} de {{dados.ideiasTotal}}</span>
+          <span class="prog-pct">{{pctImplementadas()}}%</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-fill amber" [style.width.%]="pctImplementadas()"></div></div>
+      </div>
+
+      <div class="section-title">Resumo</div>
+      <div class="summary-list">
+        <div class="summary-item"><ion-icon name="bulb-outline" color="success"></ion-icon><span>{{dados.ideiasTotal}} ideias cadastradas pela comunidade</span></div>
+        <div class="summary-item"><ion-icon name="rocket-outline" color="warning"></ion-icon><span>{{dados.ideiasImplementadas}} ideias implementadas pela prefeitura</span></div>
+        <div class="summary-item"><ion-icon name="star-outline" color="primary"></ion-icon><span>Nota média de {{dados.mediaAvaliacoes | number:'1.1-1'}} estrelas nos serviços</span></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

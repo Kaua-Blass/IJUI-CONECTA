@@ -1,0 +1,20 @@
+ion-content { --background: #2563EB; }
+.splash-content { display: flex; align-items: center; justify-content: center; }
+.splash-center {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1rem; padding: 2rem; text-align: center;
+
+  .splash-logo {
+    width: 96px; height: 96px; background: rgba(255,255,255,.15);
+    border-radius: 28px; display: flex; align-items: center; justify-content: center;
+    ion-icon { font-size: 46px; color: #fff; }
+  }
+  h1 { font-family: 'Fraunces', serif; font-size: 32px; color: #fff; margin: 0; }
+  p  { color: rgba(255,255,255,.75); font-size: 14px; margin: 0; }
+  ion-spinner { --color: rgba(255,255,255,.8); }
+  .ods-badge {
+    background: rgba(255,255,255,.15); color: rgba(255,255,255,.9);
+    font-size: 12px; padding: 5px 16px; border-radius: 999px; margin-top: .5rem;
+    border: 1px solid rgba(255,255,255,.25);
+  }
+}

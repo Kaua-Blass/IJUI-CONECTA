@@ -1,0 +1,141 @@
+// ── Ionic core CSS ──────────────────────────────────────────
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@400;500;600&display=swap');
+
+// ── Tipografia global ───────────────────────────────────────
+:root {
+  --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// ── Badges de categoria ─────────────────────────────────────
+ion-badge {
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 11px;
+  padding: 3px 10px;
+
+  &.cat-saude          { --background: #E0F2FE; --color: #0369A1; }
+  &.cat-educacao       { --background: #EEF2FF; --color: #4338CA; }
+  &.cat-infraestrutura { --background: #FEF3C7; --color: #92400E; }
+  &.cat-cultura        { --background: #FAF5FF; --color: #7C3AED; }
+  &.cat-meio_ambiente  { --background: #DCFCE7; --color: #15803D; }
+  &.cat-eventos        { --background: #DBEAFE; --color: #1D4ED8; }
+}
+
+// ── Tab bar ─────────────────────────────────────────────────
+ion-tab-bar {
+  --background: #ffffff;
+  border-top: 1px solid #E2E8F0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+ion-tab-button {
+  --color:         #94A3B8;
+  --color-selected: #2563EB;
+  font-size: 11px;
+
+  &.tab-selected, &.ion-activated {
+    --color: #2563EB;
+  }
+}
+
+// ── Toolbar ─────────────────────────────────────────────────
+ion-toolbar {
+  --background: #ffffff;
+  --color: #0F172A;
+  --border-color: #E2E8F0;
+  box-shadow: 0 1px 0 #E2E8F0;
+}
+
+// ── Cards ───────────────────────────────────────────────────
+ion-card {
+  --background: #ffffff;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.06) !important;
+  border: 1px solid #E2E8F0;
+  margin: 0 0 .75rem !important;
+}
+
+// ── Items/inputs ─────────────────────────────────────────────
+ion-item {
+  --background: #F8FAFC;
+  --border-radius: 10px;
+  --highlight-color-focused: #2563EB;
+  margin-bottom: 8px;
+}
+
+// ── Chips ────────────────────────────────────────────────────
+ion-chip {
+  --background: #F1F5F9;
+  --color: #64748B;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+
+  &.active {
+    --background: #2563EB;
+    --color: #ffffff;
+  }
+}
+
+// ── Utilitários globais ──────────────────────────────────────
+.page-content  { padding: 1rem; background: #ffffff; }
+.section-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .07em; color: #94A3B8; margin: 1.25rem 0 .6rem;
+}
+.empty-state   {
+  text-align: center; color: #94A3B8;
+  padding: 3rem 1rem; font-size: 14px;
+}
+.error-msg     { font-size: 12px; color: #DC2626; padding: 0 4px 6px; }
+
+// ── Form items ───────────────────────────────────────────────
+.form-item {
+  --background: #F8FAFC;
+  --border-radius: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+}
+
+// ── Botão principal ──────────────────────────────────────────
+.btn-primary {
+  --background: #2563EB;
+  --background-hover: #1D4ED8;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(37,99,235,.25);
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+// ── Chips row (filtros) ──────────────────────────────────────
+.chips-row {
+  display: flex; gap: 6px; padding: .75rem 1rem;
+  overflow-x: auto; scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ── Progress bars ────────────────────────────────────────────
+.prog-bar {
+  height: 5px; background: #E2E8F0;
+  border-radius: 999px; overflow: hidden;
+
+  .prog-fill {
+    height: 100%; border-radius: 999px;
+    transition: width .4s ease;
+    &.aberto       { background: #DC2626; }
+    &.em_andamento { background: #D97706; }
+    &.resolvido    { background: #16A34A; }
+  }
+}

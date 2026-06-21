@@ -1,0 +1,45 @@
+.ods-banner {
+  background: linear-gradient(135deg, #2563EB, #1D4ED8); border-radius: 18px;
+  padding: 1.1rem 1.25rem; display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem;
+  box-shadow: 0 4px 16px rgba(37,99,235,.2);
+  ion-icon { font-size: 36px; color: rgba(255,255,255,.9); flex-shrink: 0; }
+  .ods-title { font-family: 'Fraunces', serif; font-size: 14px; color: #fff; margin: 0; font-weight: 600; }
+  .ods-sub   { font-size: 12px; color: rgba(255,255,255,.75); margin: 3px 0 0; }
+}
+
+.kpi-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem;
+  .kpi-card {
+    border: 1px solid #E2E8F0; border-radius: 14px; padding: 1rem; text-align: center;
+    ion-icon { font-size: 24px; display: block; margin: 0 auto .4rem; }
+    .kn { font-size: 22px; font-weight: 700; }
+    .kl { font-size: 11px; margin-top: 2px; color: #64748B; }
+    &.blue   { background: #EFF6FF; color: #2563EB; ion-icon { color: #2563EB; } }
+    &.red    { background: #FEF2F2; color: #DC2626; ion-icon { color: #DC2626; } }
+    &.green  { background: #F0FDF4; color: #16A34A; ion-icon { color: #16A34A; } }
+    &.amber  { background: #FFFBEB; color: #D97706; ion-icon { color: #D97706; } }
+  }
+}
+
+.prog-card {
+  background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1rem; margin-bottom: .75rem;
+  .prog-label-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px;
+    color: #0F172A; .prog-pct { font-weight: 700; color: #2563EB; }
+  }
+  .prog-bar-wrap { height: 8px; background: #E2E8F0; border-radius: 999px; overflow: hidden;
+    .prog-fill { height: 100%; border-radius: 999px; transition: width .5s ease;
+      &.blue  { background: linear-gradient(90deg, #2563EB, #3B82F6); }
+      &.amber { background: linear-gradient(90deg, #D97706, #F59E0B); }
+    }
+  }
+}
+
+.summary-list {
+  display: flex; flex-direction: column; gap: 10px;
+  .summary-item {
+    display: flex; align-items: center; gap: 12px; background: #F8FAFC;
+    border: 1px solid #E2E8F0; border-radius: 12px; padding: .85rem;
+    font-size: 14px; color: #334155;
+    ion-icon { font-size: 20px; flex-shrink: 0; }
+  }
+}

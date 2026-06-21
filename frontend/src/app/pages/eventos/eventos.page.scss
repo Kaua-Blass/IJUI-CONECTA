@@ -1,0 +1,13 @@
+.evento-card {
+  cursor: pointer;
+  &.cancelado { opacity: .5; }
+  ion-card-content { display: flex; align-items: flex-start; gap: 14px; padding: 14px; }
+  .ev-date-box {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    border-radius: 12px; padding: .5rem .8rem; text-align: center; flex-shrink: 0;
+    .ev-day { display: block; font-size: 22px; font-weight: 700; color: #fff; line-height: 1; }
+    .ev-mon { display: block; font-size: 10px; color: rgba(255,255,255,.8); text-transform: uppercase; letter-spacing: .06em; }
+  }
+  .ev-title { font-size: 14px; font-weight: 600; margin: 0 0 5px; color: #0F172A; line-height: 1.4; }
+  .ev-meta  { font-size: 12px; color: #64748B; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+}

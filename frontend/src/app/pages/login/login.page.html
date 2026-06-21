@@ -1,0 +1,58 @@
+<ion-content class="auth-content">
+  <div class="auth-hero">
+    <div class="auth-logo"><ion-icon name="business-outline"></ion-icon></div>
+    <h1>Ijuí Conecta</h1>
+    <p>Prefeitura de Ijuí ao seu alcance</p>
+  </div>
+
+  <div class="auth-card">
+    <h2>Bem-vindo de volta</h2>
+    <p class="subtitle">Entre para acompanhar e participar da sua cidade</p>
+
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">E-mail</ion-label>
+          <ion-input type="email" placeholder="seu&#64;email.com" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">E-mail inválido.</div>
+
+        <ion-item class="form-item">
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-input [type]="senhaVisivel ? 'text' : 'password'" placeholder="••••••••" formControlName="senha"></ion-input>
+          <ion-button fill="clear" slot="end" (click)="senhaVisivel = !senhaVisivel">
+            <ion-icon [name]="senhaVisivel ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('senha')?.invalid && form.get('senha')?.touched">Mínimo 6 caracteres.</div>
+      </ion-list>
+
+      <ion-button expand="block" type="submit" class="btn-green" style="margin-top:8px">Entrar</ion-button>
+    </form>
+
+    <ion-button fill="clear" expand="block" routerLink="/forgot-password" class="link-btn">Esqueci minha senha</ion-button>
+
+    <!-- ── Acesso rápido para demonstração ── -->
+    <div class="demo-box">
+      <div class="demo-box-header">
+        <ion-icon name="flash-outline"></ion-icon>
+        <span>Quer só experimentar?</span>
+      </div>
+      <div class="demo-buttons">
+        <button type="button" class="demo-pill" (click)="entrarDemo('cidadao')">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          Entrar como Cidadão
+        </button>
+        <button type="button" class="demo-pill demo-pill--admin" (click)="entrarDemo('admin')">
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+          Entrar como Prefeitura
+        </button>
+      </div>
+    </div>
+
+    <div class="divider"><span>ou</span></div>
+    <ion-button fill="clear" expand="block" routerLink="/cadastro" class="link-btn">
+      Não tem conta? <strong>&nbsp;Criar conta</strong>
+    </ion-button>
+  </div>
+</ion-content>

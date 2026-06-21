@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/reclamacoes"></ion-back-button></ion-buttons>
+    <ion-title>{{ reclamacao?.protocolo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="reclamacao">
+  <div class="page-content">
+
+    <div class="info-card">
+      <div class="info-top">
+        <p class="info-desc">{{ reclamacao.descricao }}</p>
+        <ion-badge [color]="corStatus(reclamacao.status)">{{ labelStatus(reclamacao.status) }}</ion-badge>
+      </div>
+      <p class="info-meta">{{ reclamacao.categoria | titlecase }} · {{ reclamacao.createdAt | date:'dd/MM/yyyy' }}</p>
+    </div>
+
+    <img *ngIf="reclamacao.foto" [src]="reclamacao.foto" class="foto-img" alt="Foto da reclamação"/>
+
+    <div class="section-title">Histórico de atualizações</div>
+
+    <div class="timeline" *ngIf="reclamacao.atualizacoes?.length; else semHistorico">
+      <div class="tl-item" *ngFor="let a of reclamacao.atualizacoes; let last = last">
+        <div class="tl-line-wrap">
+          <div class="tl-dot" [class]="'st-' + corStatus(a.status)"></div>
+          <div class="tl-line" *ngIf="!last"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-status">{{ labelStatus(a.status) }}</div>
+          <p class="tl-msg">{{ a.mensagem }}</p>
+          <p class="tl-date">{{ a.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #semHistorico>
+      <p class="empty-state">Nenhuma atualização ainda.</p>
+    </ng-template>
+
+  </div>
+</ion-content>

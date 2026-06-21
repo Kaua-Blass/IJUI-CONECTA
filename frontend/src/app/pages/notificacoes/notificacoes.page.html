@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+    <ion-title>Notificações</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <ion-spinner *ngIf="loading" style="display:block;margin:2rem auto"></ion-spinner>
+  <ion-list *ngIf="!loading">
+    <ion-item *ngFor="let n of notificacoes" class="notif-item" [class.nao-lida]="!n.lida" (click)="marcarLida(n)" button>
+      <div class="notif-dot" slot="start" *ngIf="!n.lida"></div>
+      <ion-label>
+        <h3>{{ n.titulo }}</h3>
+        <p>{{ n.mensagem }}</p>
+        <p class="notif-date">{{ n.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <p class="empty-state" *ngIf="!loading && notificacoes.length===0">Nenhuma notificação.</p>
+</ion-content>

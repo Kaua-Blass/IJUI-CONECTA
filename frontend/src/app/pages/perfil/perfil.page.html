@@ -1,0 +1,75 @@
+<ion-header><ion-toolbar><ion-title>Perfil</ion-title></ion-toolbar></ion-header>
+<ion-content>
+  <div class="perfil-hero">
+    <div class="avatar">{{iniciais()}}</div>
+    <h2>{{usuario?.nome}}</h2>
+    <p>{{usuario?.email}}</p>
+  </div>
+
+  <div class="aba-row">
+    <button class="aba-btn" [class.active]="abaSel==='dados'"  (click)="abaSel='dados'">Dados</button>
+    <button class="aba-btn" [class.active]="abaSel==='senha'"  (click)="abaSel='senha'">Senha</button>
+    <button class="aba-btn" [class.active]="abaSel==='notif'"  (click)="abaSel='notif'">Notificações</button>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ABA DADOS -->
+    <form *ngIf="abaSel==='dados'" [formGroup]="editForm" (ngSubmit)="salvarDados()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Nome completo</ion-label>
+          <ion-input formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">E-mail</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" type="submit" class="btn-green">Salvar alterações</ion-button>
+    </form>
+
+    <!-- ABA SENHA -->
+    <form *ngIf="abaSel==='senha'" [formGroup]="senhaForm" (ngSubmit)="salvarSenha()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Senha atual</ion-label>
+          <ion-input type="password" formControlName="senhaAtual"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Nova senha</ion-label>
+          <ion-input type="password" formControlName="novaSenha" placeholder="Mínimo 6 caracteres"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Confirmar nova senha</ion-label>
+          <ion-input type="password" formControlName="confirmar"></ion-input>
+        </ion-item>
+        <div class="error-msg" *ngIf="senhaForm.errors?.['diferentes'] && senhaForm.get('confirmar')?.touched">
+          As senhas não coincidem.
+        </div>
+      </ion-list>
+      <ion-button expand="block" type="submit" class="btn-green">Alterar senha</ion-button>
+    </form>
+
+    <!-- ABA NOTIFICAÇÕES -->
+    <ion-list *ngIf="abaSel==='notif'" lines="none">
+      <ion-item><ion-label>Novas notícias</ion-label><ion-toggle slot="end" checked></ion-toggle></ion-item>
+      <ion-item><ion-label>Eventos municipais</ion-label><ion-toggle slot="end" checked></ion-toggle></ion-item>
+      <ion-item><ion-label>Atualização de reclamação</ion-label><ion-toggle slot="end" checked></ion-toggle></ion-item>
+      <ion-item><ion-label>Resposta a feedback</ion-label><ion-toggle slot="end"></ion-toggle></ion-item>
+    </ion-list>
+
+    <div class="logout-wrap" style="margin-top:2rem">
+      <ion-button expand="block" fill="outline" color="danger" (click)="confirmarLogout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>Sair da conta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

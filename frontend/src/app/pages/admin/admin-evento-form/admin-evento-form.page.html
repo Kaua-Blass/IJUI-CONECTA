@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/admin/eventos"></ion-back-button></ion-buttons>
+    <ion-title>{{ editando ? 'Editar' : 'Novo' }} Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="page-content">
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Nome do evento *</ion-label>
+          <ion-input formControlName="titulo" placeholder="Ex: Audiência Pública — Orçamento 2027"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Local *</ion-label>
+          <ion-input formControlName="local" placeholder="Ex: Teatro Municipal Ageu Magalhães"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Data *</ion-label>
+          <ion-input type="date" formControlName="data"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Horário *</ion-label>
+          <ion-input type="time" formControlName="hora"></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label position="stacked">Descrição *</ion-label>
+          <ion-textarea formControlName="descricao" placeholder="Descreva o evento..." rows="5" autoGrow="true"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" type="submit" color="dark">{{ editando ? 'Salvar alterações' : 'Criar evento' }}</ion-button>
+    </form>
+  </div>
+</ion-content>

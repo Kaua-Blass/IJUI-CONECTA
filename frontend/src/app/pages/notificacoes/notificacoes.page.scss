@@ -1,0 +1,8 @@
+.notif-item {
+  --background: #fff;
+  &.nao-lida { --background: #EFF6FF; }
+  ion-label h3  { font-size: 14px; font-weight: 600; color: #0F172A; }
+  ion-label p   { font-size: 13px; color: #64748B; }
+}
+.notif-dot { width: 10px; height: 10px; border-radius: 50%; background: #2563EB; flex-shrink: 0; }
+.notif-date { font-size: 11px; color: #94A3B8 !important; }

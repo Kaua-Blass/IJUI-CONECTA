@@ -1,0 +1,8 @@
+{
+  "name": "ijui-conecta",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ijui-conecta"
+}

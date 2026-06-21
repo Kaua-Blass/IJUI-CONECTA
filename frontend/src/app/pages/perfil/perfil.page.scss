@@ -1,0 +1,26 @@
+.perfil-hero {
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  padding: 2.5rem 1.5rem 1.5rem;
+  display: flex; flex-direction: column; align-items: center;
+  .avatar {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: rgba(255,255,255,.2); border: 3px solid rgba(255,255,255,.4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600;
+    color: #fff; margin-bottom: .85rem;
+  }
+  h2 { font-family: 'Fraunces', serif; color: #fff; font-size: 20px; margin: 0 0 4px; }
+  p  { font-size: 13px; color: rgba(255,255,255,.75); margin: 0; }
+}
+
+.aba-row {
+  display: flex; background: #fff; border-bottom: 1px solid #E2E8F0;
+  .aba-btn {
+    flex: 1; padding: .85rem; background: none; border: none; border-bottom: 2px solid transparent;
+    font-size: 14px; cursor: pointer; font-family: 'Inter', sans-serif; color: #94A3B8;
+    font-weight: 500; transition: all .2s;
+    &.active { color: #2563EB; border-bottom-color: #2563EB; }
+  }
+}
+
+.logout-wrap { margin-top: 1.5rem; }

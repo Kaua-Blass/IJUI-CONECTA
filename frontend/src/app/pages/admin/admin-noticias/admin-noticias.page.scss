@@ -1,0 +1,6 @@
+.noticia-row {
+  ion-card-content { padding: 14px; }
+  .n-titulo { font-size: 14px; font-weight: 600; margin: .4rem 0 2px; color: #0F172A; line-height: 1.4; }
+  .n-date   { font-size: 11px; color: #94A3B8; margin: 0 0 .75rem; }
+  .action-row { display: flex; gap: 8px; }
+}

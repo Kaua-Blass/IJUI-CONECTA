@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/noticias"></ion-back-button></ion-buttons>
+    <ion-title>Notícia</ion-title>
+    <ion-buttons slot="end"><ion-button><ion-icon name="share-outline"></ion-icon></ion-button></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="noticia">
+  <img [src]="noticia.imagem || 'assets/placeholder.png'" class="hero-img" alt="Imagem"/>
+  <div class="page-content">
+    <div class="meta-row">
+      <ion-badge [class]="'cat-'+noticia.categoria">{{ noticia.categoria | titlecase }}</ion-badge>
+      <span class="date">{{ noticia.createdAt | date:'dd/MM/yyyy' }}</span>
+    </div>
+    <h1>{{ noticia.titulo }}</h1>
+    <div class="body-text" [innerHTML]="noticia.conteudo"></div>
+  </div>
+</ion-content>

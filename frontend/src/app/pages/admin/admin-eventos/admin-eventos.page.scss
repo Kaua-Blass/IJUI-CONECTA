@@ -1,0 +1,15 @@
+.ev-row {
+  &.cancelado { opacity: .5; }
+  ion-card-content { padding: 14px; }
+  .ev-top { display: flex; gap: 12px; margin-bottom: .75rem; align-items: flex-start;
+    .ev-date-box {
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      border-radius: 12px; padding: .4rem .7rem; text-align: center; flex-shrink: 0;
+      .ev-day { display: block; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+      .ev-mon { display: block; font-size: 10px; color: rgba(255,255,255,.8); text-transform: uppercase; }
+    }
+    .ev-titulo { font-size: 14px; font-weight: 600; margin: 0 0 3px; color: #0F172A; }
+    .ev-meta   { font-size: 12px; color: #64748B; margin: 0 0 4px; display: flex; align-items: center; gap: 3px; flex-wrap: wrap; }
+  }
+  .action-row { display: flex; gap: 8px; }
+}

@@ -1,0 +1,119 @@
+:root {
+  /* ── Azul principal ─────────────────────────────────────── */
+  --ion-color-primary:              #2563EB;
+  --ion-color-primary-rgb:          37,99,235;
+  --ion-color-primary-contrast:     #ffffff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade:        #1d4ed8;
+  --ion-color-primary-tint:         #3b82f6;
+
+  /* ── Azul secundário (indigo) ───────────────────────────── */
+  --ion-color-secondary:              #4F46E5;
+  --ion-color-secondary-rgb:          79,70,229;
+  --ion-color-secondary-contrast:     #ffffff;
+  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-shade:        #4338ca;
+  --ion-color-secondary-tint:         #6366f1;
+
+  /* ── Ciano/sky (destaque) ───────────────────────────────── */
+  --ion-color-tertiary:              #0EA5E9;
+  --ion-color-tertiary-rgb:          14,165,233;
+  --ion-color-tertiary-contrast:     #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255,255,255;
+  --ion-color-tertiary-shade:        #0284c7;
+  --ion-color-tertiary-tint:         #38bdf8;
+
+  /* ── Success (verde) ────────────────────────────────────── */
+  --ion-color-success:              #16A34A;
+  --ion-color-success-rgb:          22,163,74;
+  --ion-color-success-contrast:     #ffffff;
+  --ion-color-success-contrast-rgb: 255,255,255;
+  --ion-color-success-shade:        #15803d;
+  --ion-color-success-tint:         #22c55e;
+
+  /* ── Warning (âmbar) ────────────────────────────────────── */
+  --ion-color-warning:              #D97706;
+  --ion-color-warning-rgb:          217,119,6;
+  --ion-color-warning-contrast:     #ffffff;
+  --ion-color-warning-contrast-rgb: 255,255,255;
+  --ion-color-warning-shade:        #b45309;
+  --ion-color-warning-tint:         #f59e0b;
+
+  /* ── Danger (vermelho) ──────────────────────────────────── */
+  --ion-color-danger:              #DC2626;
+  --ion-color-danger-rgb:          220,38,38;
+  --ion-color-danger-contrast:     #ffffff;
+  --ion-color-danger-contrast-rgb: 255,255,255;
+  --ion-color-danger-shade:        #b91c1c;
+  --ion-color-danger-tint:         #ef4444;
+
+  /* ── Dark ───────────────────────────────────────────────── */
+  --ion-color-dark:              #0F172A;
+  --ion-color-dark-rgb:          15,23,42;
+  --ion-color-dark-contrast:     #ffffff;
+  --ion-color-dark-contrast-rgb: 255,255,255;
+  --ion-color-dark-shade:        #0a1020;
+  --ion-color-dark-tint:         #1e293b;
+
+  /* ── Medium ─────────────────────────────────────────────── */
+  --ion-color-medium:              #64748B;
+  --ion-color-medium-rgb:          100,116,139;
+  --ion-color-medium-contrast:     #ffffff;
+  --ion-color-medium-contrast-rgb: 255,255,255;
+  --ion-color-medium-shade:        #475569;
+  --ion-color-medium-tint:         #94a3b8;
+
+  /* ── Light (fundo dos cards/itens) ─────────────────────── */
+  --ion-color-light:              #F1F5F9;
+  --ion-color-light-rgb:          241,245,249;
+  --ion-color-light-contrast:     #0F172A;
+  --ion-color-light-contrast-rgb: 15,23,42;
+  --ion-color-light-shade:        #E2E8F0;
+  --ion-color-light-tint:         #F8FAFC;
+
+  /* ── Background e texto globais (modo claro fixo) ───────── */
+  --ion-background-color:          #FFFFFF;
+  --ion-background-color-rgb:      255,255,255;
+  --ion-text-color:                #0F172A;
+  --ion-text-color-rgb:            15,23,42;
+  --ion-item-background:           #FFFFFF;
+  --ion-card-background:           #FFFFFF;
+  --ion-toolbar-background:        #FFFFFF;
+  --ion-tab-bar-background:        #FFFFFF;
+
+  /* ── Variáveis customizadas Ijuí Conecta ────────────────── */
+  --ijui-blue:       #2563EB;
+  --ijui-blue-dk:    #1d4ed8;
+  --ijui-blue-lt:    #DBEAFE;
+  --ijui-blue-xlt:   #EFF6FF;
+  --ijui-indigo:     #4F46E5;
+  --ijui-indigo-lt:  #EEF2FF;
+  --ijui-sky:        #0EA5E9;
+  --ijui-sky-lt:     #E0F2FE;
+  --ijui-green:      #16A34A;
+  --ijui-green-lt:   #DCFCE7;
+  --ijui-amber:      #D97706;
+  --ijui-amber-lt:   #FEF3C7;
+  --ijui-red:        #DC2626;
+  --ijui-red-lt:     #FEE2E2;
+  --ijui-slate:      #64748B;
+  --ijui-slate-lt:   #F1F5F9;
+}
+
+/* ── Desabilita dark mode — app sempre em modo claro ────── */
+@media (prefers-color-scheme: dark) {
+  body {
+    --ion-background-color:     #FFFFFF;
+    --ion-background-color-rgb: 255,255,255;
+    --ion-text-color:           #0F172A;
+    --ion-text-color-rgb:       15,23,42;
+    --ion-color-light:          #F1F5F9;
+    --ion-color-light-rgb:      241,245,249;
+    --ion-color-light-shade:    #E2E8F0;
+    --ion-color-light-tint:     #F8FAFC;
+    --ion-item-background:      #FFFFFF;
+    --ion-card-background:      #FFFFFF;
+    --ion-toolbar-background:   #FFFFFF;
+    --ion-tab-bar-background:   #FFFFFF;
+  }
+}

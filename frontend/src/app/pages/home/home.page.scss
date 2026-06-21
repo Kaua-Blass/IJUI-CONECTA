@@ -1,0 +1,55 @@
+ion-content { --background: #F8FAFC; }
+
+.header-logo { font-family: 'Fraunces', serif; font-weight: 600; color: #0F172A; }
+
+.notif-btn {
+  position: relative;
+  ion-badge {
+    position: absolute; top: 4px; right: 4px;
+    font-size: 9px; min-width: 16px; height: 16px;
+    padding: 0 4px; border-radius: 999px;
+  }
+}
+
+.welcome-banner {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  border-radius: 18px; padding: 1.35rem 1.25rem; margin-bottom: 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(37,99,235,.25);
+
+  h2 { font-family: 'Fraunces', serif; color: #fff; font-size: 19px; margin: 0; font-weight: 600; }
+  p  { color: rgba(255,255,255,.75); font-size: 12px; margin: 5px 0 0; }
+  ion-icon { font-size: 40px; color: rgba(255,255,255,.85); }
+}
+
+.modules-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: .5rem;
+
+  .module-card {
+    background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
+    padding: 1.1rem; cursor: pointer; text-align: left;
+    box-shadow: 0 1px 3px rgba(15,23,42,.05);
+    transition: box-shadow .2s, transform .15s;
+    &:active { transform: scale(.97); }
+    &.full-width {
+      grid-column: 1/-1; display: flex; align-items: center; gap: 14px;
+      .mod-name, .mod-sub { margin: 0; }
+    }
+  }
+
+  .mod-icon {
+    width: 46px; height: 46px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: .65rem; ion-icon { font-size: 22px; }
+    &.blue   { background: #DBEAFE; color: #2563EB; }
+    &.indigo { background: #EEF2FF; color: #4F46E5; }
+    &.red    { background: #FEE2E2; color: #DC2626; }
+    &.green  { background: #DCFCE7; color: #16A34A; }
+    &.purple { background: #FAF5FF; color: #7C3AED; }
+  }
+
+  .mod-name { font-size: 14px; font-weight: 600; margin: 0 0 2px; color: #0F172A; }
+  .mod-sub  { font-size: 11px; color: #94A3B8; margin: 0; }
+}
+
+.admin-btn-wrap { margin-top: 1.25rem; }

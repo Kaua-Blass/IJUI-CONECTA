@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Painel Administrativo</ion-title>
+    <ion-buttons slot="end"><ion-button routerLink="/home"><ion-icon name="exit-outline"></ion-icon></ion-button></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <div *ngIf="dados">
+      <div class="section-title">Indicadores gerais</div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><ion-icon name="people-outline"></ion-icon><div class="kn">{{dados.totalUsuarios}}</div><div class="kl">Usuários</div></div>
+        <div class="kpi-card"><ion-icon name="warning-outline"></ion-icon><div class="kn">{{dados.totalReclamacoes}}</div><div class="kl">Reclamações</div></div>
+        <div class="kpi-card"><ion-icon name="checkmark-circle-outline"></ion-icon><div class="kn">{{dados.reclamacoesResolvidas}}</div><div class="kl">Resolvidas</div></div>
+        <div class="kpi-card"><ion-icon name="bulb-outline"></ion-icon><div class="kn">{{dados.ideiasTotal}}</div><div class="kl">Ideias</div></div>
+        <div class="kpi-card"><ion-icon name="rocket-outline"></ion-icon><div class="kn">{{dados.ideiasImplementadas}}</div><div class="kl">Implementadas</div></div>
+        <div class="kpi-card"><ion-icon name="star-outline"></ion-icon><div class="kn">{{dados.mediaAvaliacoes | number:'1.1-1'}}</div><div class="kl">Avaliação</div></div>
+      </div>
+
+      <div class="section-title">Gestão</div>
+      <ion-list class="admin-menu" lines="none">
+        <ion-item button routerLink="/admin/noticias">
+          <ion-icon name="newspaper-outline" slot="start" color="primary"></ion-icon>
+          <ion-label><h3>Gestão de Notícias</h3><p>Criar, editar e excluir notícias</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item button routerLink="/admin/eventos">
+          <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+          <ion-label><h3>Gestão de Eventos</h3><p>Criar, editar e cancelar eventos</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item button routerLink="/admin/reclamacoes">
+          <ion-icon name="warning-outline" slot="start" color="danger"></ion-icon>
+          <ion-label><h3>Gestão de Reclamações</h3><p>Listar, filtrar e atualizar status</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item button routerLink="/admin/ideias">
+          <ion-icon name="bulb-outline" slot="start" color="success"></ion-icon>
+          <ion-label><h3>Gestão de Ideias</h3><p>Aprovar, rejeitar e implementar</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item button routerLink="/admin/feedbacks">
+          <ion-icon name="star-outline" slot="start" color="tertiary"></ion-icon>
+          <ion-label><h3>Feedbacks</h3><p>Ver notas e comentários</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item button routerLink="/admin/usuarios">
+          <ion-icon name="people-outline" slot="start" color="medium"></ion-icon>
+          <ion-label><h3>Gestão de Usuários</h3><p>Ativar e desativar contas</p></ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/admin"              routerLinkActive="tab-active"><ion-icon name="grid-outline"></ion-icon><ion-label>Dashboard</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/noticias"     routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/reclamacoes"  routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/ideias"       routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"             routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

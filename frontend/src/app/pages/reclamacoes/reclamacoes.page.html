@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reclamações</ion-title>
+    <ion-buttons slot="end"><ion-button routerLink="/reclamacoes/nova"><ion-icon name="add-outline"></ion-icon></ion-button></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <div class="chips-row">
+    <ion-chip *ngFor="let s of statuses" [class.active]="statusSel===s.v" (click)="statusSel=s.v;carregar()">{{s.l}}</ion-chip>
+  </div>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-card class="recl-card" *ngFor="let r of reclamacoes" [routerLink]="['/reclamacoes', r.id]">
+      <ion-card-content>
+        <div class="recl-top">
+          <p class="recl-titulo">{{r.descricao | slice:0:70}}{{r.descricao.length>70?'...':''}}</p>
+          <ion-badge [color]="corStatus(r.status)">{{labelStatus(r.status)}}</ion-badge>
+        </div>
+        <p class="recl-meta">{{r.protocolo}} · {{r.categoria | titlecase}} · {{r.createdAt | date:'dd/MM/yyyy'}}</p>
+        <div class="prog-bar"><div class="prog-fill" [style.width.%]="pct(r.status)" [class]="r.status"></div></div>
+      </ion-card-content>
+    </ion-card>
+    <p class="empty-state" *ngIf="!loading && reclamacoes.length===0">Nenhuma reclamação encontrada.</p>
+  </div>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="success" routerLink="/reclamacoes/nova"><ion-icon name="add"></ion-icon></ion-fab-button>
+</ion-fab>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/home"        routerLinkActive="tab-active"><ion-icon name="home-outline"></ion-icon><ion-label>Início</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"      routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

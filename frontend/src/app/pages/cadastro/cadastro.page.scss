@@ -1,0 +1,32 @@
+ion-content.auth-content { --background: #2563EB; }
+
+.auth-hero {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 3.5rem 1.5rem 2rem;
+  .auth-logo {
+    width: 68px; height: 68px; background: #fff; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    ion-icon { font-size: 32px; color: #2563EB; }
+  }
+  h1 { font-family: 'Fraunces', serif; font-size: 28px; color: #fff; margin: 0; font-weight: 600; }
+  p  { font-size: 14px; color: rgba(255,255,255,.75); margin: 6px 0 0; }
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 2rem 1.5rem 2.5rem;
+  min-height: 58vh;
+  h2 { font-family: 'Fraunces', serif; font-size: 22px; margin: 0 0 4px; color: #0F172A; }
+  .subtitle { font-size: 13px; color: #64748B; margin: 0 0 1.5rem; }
+}
+
+.link-btn { --color: #2563EB; font-size: 14px; }
+
+.divider {
+  display: flex; align-items: center; gap: 10px; margin: 1rem 0;
+  &::before, &::after { content: ''; flex: 1; height: 1px; background: #E2E8F0; }
+  span { font-size: 12px; color: #94A3B8; }
+}
+.auth-hero { padding-top: 2rem !important; }

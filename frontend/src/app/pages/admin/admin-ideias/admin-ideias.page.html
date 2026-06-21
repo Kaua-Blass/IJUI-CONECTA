@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start"><ion-back-button defaultHref="/admin"></ion-back-button></ion-buttons>
+    <ion-title>Gestão de Ideias</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
+  <div class="page-content">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-card class="ideia-row" *ngFor="let i of ideias">
+      <ion-card-content>
+        <div class="ideia-top">
+          <div>
+            <div class="ideia-titulo-row">
+              <h3 class="ideia-titulo">{{i.titulo}}</h3>
+              <ion-badge [color]="corStatus(i.status)">{{labelStatus(i.status)}}</ion-badge>
+            </div>
+            <p class="ideia-cat">{{i.categoria}}</p>
+            <p class="ideia-desc">{{i.descricao | slice:0:100}}{{i.descricao.length>100?'...':''}}</p>
+          </div>
+        </div>
+        <div class="ideia-footer">
+          <span class="votos"><ion-icon name="thumbs-up-outline"></ion-icon> {{i.votos}} apoios</span>
+          <ion-button fill="outline" size="small" color="dark" (click)="atualizarStatus(i)">
+            <ion-icon name="swap-horizontal-outline" slot="start"></ion-icon>Alterar situação
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <p class="empty-state" *ngIf="!loading && ideias.length===0">Nenhuma ideia cadastrada.</p>
+  </div>
+</ion-content>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button routerLink="/admin"             routerLinkActive="tab-active"><ion-icon name="grid-outline"></ion-icon><ion-label>Dashboard</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/noticias"    routerLinkActive="tab-active"><ion-icon name="newspaper-outline"></ion-icon><ion-label>Notícias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/reclamacoes" routerLinkActive="tab-active"><ion-icon name="warning-outline"></ion-icon><ion-label>Reclamações</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/admin/ideias"      routerLinkActive="tab-active"><ion-icon name="bulb-outline"></ion-icon><ion-label>Ideias</ion-label></ion-tab-button>
+  <ion-tab-button routerLink="/perfil"            routerLinkActive="tab-active"><ion-icon name="person-outline"></ion-icon><ion-label>Perfil</ion-label></ion-tab-button>
+</ion-tab-bar>

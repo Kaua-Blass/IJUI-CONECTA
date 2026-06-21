@@ -1,0 +1,42 @@
+{
+  "name": "ijui-conecta",
+  "version": "1.0.0",
+  "description": "Plataforma digital para participa\u00e7\u00e3o cidad\u00e3 em Iju\u00ed - RS",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "android": "ionic capacitor build android",
+    "watch": "ng build --watch --configuration development"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "17.3.12",
+    "@angular/common": "17.3.12",
+    "@angular/compiler": "17.3.12",
+    "@angular/core": "17.3.12",
+    "@angular/forms": "17.3.12",
+    "@angular/platform-browser": "17.3.12",
+    "@angular/platform-browser-dynamic": "17.3.12",
+    "@angular/router": "17.3.12",
+    "@capacitor/android": "5.7.8",
+    "@capacitor/camera": "5.0.9",
+    "@capacitor/core": "5.7.8",
+    "@capacitor/geolocation": "5.0.7",
+    "@capacitor/push-notifications": "5.1.2",
+    "@ionic/angular": "7.8.6",
+    "ionicons": "7.4.0",
+    "rxjs": "7.8.1",
+    "tslib": "2.7.0",
+    "zone.js": "0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "17.3.11",
+    "@angular/cli": "17.3.11",
+    "@angular/compiler-cli": "17.3.12",
+    "@capacitor/cli": "5.7.8",
+    "@ionic/cli": "7.2.0",
+    "typescript": "5.4.5"
+  }
+}

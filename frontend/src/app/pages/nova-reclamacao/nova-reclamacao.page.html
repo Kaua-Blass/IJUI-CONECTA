@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/reclamacoes"></ion-back-button></ion-buttons>
+    <ion-title>Nova Reclamação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-content">
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+
+      <p class="field-hint">Informe a categoria e descreva o problema. Adicionar foto e localização ajuda a agilizar o atendimento.</p>
+
+      <ion-list lines="none">
+        <ion-item class="form-item">
+          <ion-label position="stacked">Categoria *</ion-label>
+          <ion-select formControlName="categoria" placeholder="Selecione...">
+            <ion-select-option *ngFor="let c of categorias" [value]="c.v">{{ c.l }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('categoria')?.invalid && form.get('categoria')?.touched">Selecione uma categoria.</div>
+
+        <ion-item class="form-item">
+          <ion-label position="stacked">Descrição * (mín. 20 caracteres)</ion-label>
+          <ion-textarea formControlName="descricao" placeholder="Descreva o problema com detalhes..." rows="5" autoGrow="true"></ion-textarea>
+        </ion-item>
+        <div class="error-msg" *ngIf="form.get('descricao')?.invalid && form.get('descricao')?.touched">Descrição muito curta.</div>
+      </ion-list>
+
+      <!-- Foto -->
+      <div class="section-title" style="margin-top:.5rem">Foto</div>
+      <div class="foto-box" *ngIf="!fotoBase64" (click)="tirarFoto()">
+        <ion-icon name="camera-outline"></ion-icon>
+        <p>Toque para adicionar foto</p>
+      </div>
+      <div class="foto-preview-box" *ngIf="fotoBase64">
+        <img [src]="'data:image/jpeg;base64,' + fotoBase64" alt="Foto"/>
+        <ion-button fill="clear" color="danger" (click)="removerFoto()">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+
+      <!-- Localização -->
+      <div class="section-title" style="margin-top:1rem">Localização GPS</div>
+      <ion-button expand="block" fill="outline" color="medium" (click)="obterLocalizacao()" style="margin-bottom:.5rem">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        {{ coords ? 'Localização obtida ✓' : 'Usar minha localização' }}
+      </ion-button>
+      <p class="coords-text" *ngIf="coords">
+        Lat: {{ coords.lat | number:'1.5-5' }} · Lng: {{ coords.lng | number:'1.5-5' }}
+      </p>
+
+      <ion-button expand="block" type="submit" class="btn-green" style="margin-top:1.5rem">
+        Enviar Reclamação
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

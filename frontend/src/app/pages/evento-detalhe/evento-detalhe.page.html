@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/eventos"></ion-back-button></ion-buttons>
+    <ion-title>Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="evento">
+  <div class="page-content">
+    <ion-badge color="danger" *ngIf="evento.cancelado">Cancelado</ion-badge>
+    <h1>{{ evento.titulo }}</h1>
+    <div class="ev-meta-row">
+      <div class="ev-meta-item"><ion-icon name="calendar-outline"></ion-icon><span>{{ evento.data | date:'dd/MM/yyyy' }}</span></div>
+      <div class="ev-meta-item"><ion-icon name="time-outline"></ion-icon><span>{{ evento.hora }}</span></div>
+      <div class="ev-meta-item"><ion-icon name="location-outline"></ion-icon><span>{{ evento.local }}</span></div>
+    </div>
+    <p class="ev-desc">{{ evento.descricao }}</p>
+  </div>
+</ion-content>
